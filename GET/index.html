@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET</title>
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+		box-sizing: border-box;
+		text-decoration: none;
+		color: black;
+	}
+	body{
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		width: 100vw;
+		height: 100vh;
+	}
+	input{
+		width: 170px;
+	}
+	.form{
+		padding: 50px;
+		border: 1px solid black;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex-grow: 1;
+	}
+	.form h1{
+		margin-bottom: 10px;
+	}
+	.form2{
+		padding: 50px;
+		border: 1px solid black;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		flex-grow: 1;
+	}
+	.form2 h1{
+		margin-bottom: 10px;
+	}
+</style>
+
+</head>
+<body>
+	<div class="form">
+	<h1>Mostrar usuário de acordo com ID</h1>
+	<form method="get" action="usuario.php">
+		<label for="id">ID do usuário:</label>
+		<input type="text" id="id" name="id" value="" placeholder="Digite um número de 1 a 6:">
+		<button type="submit">Alterar</button>
+	</form>
+	</div>
+	<div class="form2">
+	<h1>Veja todos os IDs</h1>
+	<button><a href="usuarios.php">Clique aqui</a></button>
+	</div>
+	<script>
+		// Seleciona o form
+const form = document.querySelector('form');
+
+// Adiciona um controlador de evento para o evento submit
+form.addEventListener('submit', function(event) {
+   
+	// Para a ação padrão do formulário, para que você possa validá-lo antes de enviar
+    event.preventDefault();
+
+    // Selecione o campo de entrada do usuário
+    const input = document.querySelector('#id');
+
+    // Verifique se o campo de entrada não está vazio
+    if (input.value === "") {
+        alert('Digite um número por favor, não deixe o campo vazio');
+        return; // Retorna imediatamente para impedir que o formulário seja enviado
+    }
+
+    // Converta o valor do campo de entrada para um número
+    const valorInput = parseInt(input.value);
+
+    // ==== PRECISA DE ATUALIZAÇÕES APÓS O POST ==== //
+	
+	// Verifique se o número está dentro do intervalo permitido	
+    if (valorInput > 6) {
+        alert('Por favor, digite um número MENOR ou IGUAL a 6.');
+        return; // Retorna imediatamente para impedir que o formulário seja enviado
+    } else if (valorInput < 1){
+        alert('Por favor, digite um número MAIOR ou IGUAL a 1.');
+        return; // Retorna imediatamente para impedir que o formulário seja enviado
+    }
+
+    // Se o código chegar aqui, significa que o campo de entrada do usuário é válido e o formulário pode ser enviado
+    form.submit();
+});
+
+
+	</script>
+</body>
+</html>
