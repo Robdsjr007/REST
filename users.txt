@@ -42,7 +42,12 @@
     },
     {
         "id": 8,
-        "email": "cHJlZG9AZ21haWwuY29t",
-        "senha": "MzI0MjQyNDIzNA=="
+        "email": "ZGFuaWVscGlrYWZpbmFAZ21haWwuY29t",
+        "senha": "MzIzMjM="
+    },
+    {
+        "id": 9,
+        "email": "Z29yZG9iYW5oYUBnbWFpbC5jb20=",
+        "senha": "MzIzMTIz"
     }
 ]
