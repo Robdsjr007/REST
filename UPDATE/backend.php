@@ -18,12 +18,12 @@ try {
         $usuariosArray = array(); // Se o arquivo estiver vazio, inicializa o array
     }
 
-    $idToUpdate = $data['id']; // Assuming you will provide the 'id' of the user to update
+    $idToUpdate = (int)$data['id']; // Assuming you will provide the 'id' of the user to update
 
     // Find the user with the given 'id' in the array
     $foundIndex = null;
     foreach ($usuariosArray as $index => $user) {
-        if ($user['id'] === $idToUpdate) {
+        if ((int)$user['id'] === $idToUpdate) {
             $foundIndex = $index;
             break;
         }
