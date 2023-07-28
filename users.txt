@@ -2,21 +2,11 @@
     {
         "id": 1,
         "email": "cm9ic29uMjAwNWRpYXNAZ21haWwuY29t",
-        "senha": "ZnVuY2lvbmE="
+        "senha": "MzIzMTIzMTI="
     },
     {
         "id": 2,
-        "email": "ZGFuaWVsLnVpazEwQGV0ZWMuc3AuZ292LmJy",
-        "senha": "ZGFuaWVsdWlrMTIz"
-    },
-    {
-        "id": 3,
-        "email": "cnlhbmdheUBnbWFpbC5jb20=",
-        "senha": "cnlhbmdheTEyMzIzMQ=="
-    },
-    {
-        "id": 4,
         "email": "aXNhYmVsbGFudW5lczEyMTgyM0BnbWFpbC5jb20=",
-        "senha": "bVNWVCorRF11aipRMjZz"
+        "senha": "NTI1MTUyNTUy"
     }
 ]
