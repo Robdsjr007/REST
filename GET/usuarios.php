@@ -42,7 +42,7 @@ td{
           $usuarios = json_decode($json);
 
           echo "<table>";
-          echo "<tr><th>IDs</th><th>Emails</th><th>Senhas</th><th>Tokens</th></tr>";
+          echo "<tr><th>IDs</th><th>Emails</th><th>Senhas</th></tr>";
 
           $i = 0;
           
@@ -52,7 +52,6 @@ td{
         echo "<td>" . $usuarios[$i]->id . "</td>";
         echo "<td>" . base64_decode($usuarios[$i]->email) . "</td>";
         echo "<td>" . base64_decode($usuarios[$i]->senha) . "</td>";
-        echo "<td>" . $usuarios[$i]->login . "</td>";
         echo "</tr>";
       
         $i++;

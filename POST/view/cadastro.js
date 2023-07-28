@@ -15,6 +15,7 @@ document.getElementById("cadastroForm").addEventListener("submit", function(even
     .then(data => {
         alert(data.message);
         form.reset();
+        location.reload();
     })
     .catch(error => {
         console.error(error);

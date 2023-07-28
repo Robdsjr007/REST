@@ -61,12 +61,11 @@ if ($usuario_id !== null) {
             
             // Retorna o usuário encontrado em Tabela
             echo "<table>";
-            echo "<tr><th>ID</th><th>Email</th><th>Senha</th><th>Login</th></tr>";
+            echo "<tr><th>ID</th><th>Email</th><th>Senha</th></tr>";
             echo "<tr>";
             echo "<td>" . $usuario['id'] . "</td>";
             echo "<td>" . $usuario['email'] . "</td>";
             echo "<td>" . $usuario['senha'] . "</td>";
-            echo "<td>" . $usuario['login'] . "</td>";
             echo "</tr>";
             echo "</table>";
 

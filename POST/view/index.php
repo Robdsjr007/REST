@@ -24,25 +24,18 @@
                 <button type="submit">Cadastrar</button>
             </form>
         </div>
-        <div class="card">
-        <?php
-          $json = file_get_contents('../../users.txt');
-          $usuarios = json_decode($json);
-
-          echo "<table>";
-          echo "<tr><th>ID</th><th>Usuários</th><th>Senhas</th></tr>";
-
-          foreach ($usuarios as $usuario) {
-            echo '<tr>';
-            echo "<td>" . $usuario->id . "</td>";
-            echo "<td>" . base64_decode($usuario->email) . "</td>";
-            echo "<td>" . base64_decode($usuario->senha) . "</td>";
-            echo "</tr>";
-          } 
-
-          echo "</table>";
-        ?>
-        </div>
+        <table border="1" width="500">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Usuários</th>
+                        <th>Senhas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php include './usuarios_table.php'; ?>
+                </tbody>
+            </table>
     </content>
     <script src="./cadastro.js"></script>
 </body>

@@ -18,19 +18,12 @@ content {
 
 .card {
     display: flex;
-    flex-direction: column;
-    align-items: center;
     border: black 1px solid;
-    padding: 20px;
-    width: 500px;
+    width: auto;
     margin: 20px;
 }
 
-.card input{
-    margin-top: 5px;
-}
-
-.card button{
-    margin-top: 10px;
-    width: 100%;
+#btn_excluir{
+    color: white;
+    background-color: red;
 }

@@ -1,47 +1,53 @@
 <?php
-// Verifica se a requisição é do tipo DELETE
+
 if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
-    // Lê o corpo da requisição como JSON
-    $data = json_decode(file_get_contents('php://input'), true);
+    $data = json_decode(file_get_contents('php://input'), true); // Recebe os dados do DELETE
+    $id = $data['id']; // ID do usuário a ser excluído
 
-    // Verifica se o parâmetro "usuario" foi fornecido
-    if (isset($data['usuario'])) {
-        $usuarioParaExcluir = $data['usuario'];
+// Valida se o ID foi fornecido
+if (!isset($id)) {
+    $response = array(
+        'error' => 'ID do usuário não fornecido!'
+    );
 
-        // Caminho para o arquivo de texto onde os usuários são armazenados
-        $caminhoArquivo = '../../users.txt';
+    header('Content-Type: application/json');
+    echo json_encode($response);
+    exit;
+}
 
-        // Lê todos os usuários do arquivo de texto
-        $usuarios = file($caminhoArquivo, FILE_IGNORE_NEW_LINES);
+// Lê o arquivo com os usuários cadastrados
+$usuarios = file_get_contents('../../users.txt');
+$usuariosArray = json_decode($usuarios, true);
 
-        // Procura o usuário para exclusão no array
-        $indiceUsuario = array_search($usuarioParaExcluir, $usuarios);
-
-        // Se o usuário for encontrado, remove-o do array
-        if ($indiceUsuario !== false) {
-            unset($usuarios[$indiceUsuario]);
-
-            // Reescreve o arquivo com os usuários restantes
-            file_put_contents($caminhoArquivo, implode("\n", $usuarios));
-
-            // Responde com uma mensagem de sucesso
-            $response = array('message' => 'Usuário excluído com sucesso.');
-            echo json_encode($response);
-            http_response_code(200);
-        } else {
-            // Responde com uma mensagem de erro caso o usuário não seja encontrado
-            $response = array('message' => 'Usuário não encontrado.');
-            echo json_encode($response);
-            http_response_code(404);
-        }
-    } else {
-        // Responde com uma mensagem de erro caso o parâmetro "usuario" não seja fornecido
-        $response = array('message' => 'O parâmetro "usuario" é obrigatório.');
-        echo json_encode($response);
-        http_response_code(400);
+// Procura o usuário com o ID fornecido no array
+$index = -1;
+foreach ($usuariosArray as $key => $usuario) {
+    if ($usuario['id'] === $id) {
+        $index = $key;
+        break;
     }
+}
+
+// Se o usuário foi encontrado, remove-o do array e atualiza o arquivo
+if ($index !== -1) {
+    array_splice($usuariosArray, $index, 1);
+
+    $usuariosJson = json_encode($usuariosArray, JSON_PRETTY_PRINT) . PHP_EOL;
+    file_put_contents('../../users.txt', $usuariosJson);
+
+    $response = array(
+        'message' => 'Usuário excluído com sucesso!'
+    );
+
+    header('Content-Type: application/json');
+    echo json_encode($response);
 } else {
-    // Responde com um erro caso o método da requisição não seja DELETE
-    http_response_code(405);
+    $response = array(
+        'error' => 'Usuário não encontrado!'
+    );
+
+    header('Content-Type: application/json');
+    echo json_encode($response);
+}
 }
 ?>
