@@ -1,6 +1,9 @@
-$(document).ready(function() {
-    $(".delete-button").on("click", function() {
-        var userID = $(this).data("id");
+document.addEventListener("DOMContentLoaded", function () {
+    var DeletesButtons = document.querySelectorAll(".delete-button");
+  
+    DeletesButtons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        var userID = button.getAttribute("data-id");
         fetch("./backend.php", {
             method: "DELETE",
             headers: {
@@ -16,5 +19,6 @@ $(document).ready(function() {
         .catch(error => {
             console.error(error);
         });
-    });
+     });
+  });
 });
