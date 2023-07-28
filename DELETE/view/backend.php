@@ -19,15 +19,16 @@ if (!isset($id)) {
 $usuarios = file_get_contents('../../users.txt');
 $usuariosArray = json_decode($usuarios, true);
 
-// Procura o usuário com o ID fornecido no array
-$index = -1;
-foreach ($usuariosArray as $key => $usuario) {
-    if ($usuario['id'] === $id) {
-        $index = $key;
-        break;
-    }
-}
+$idToDelete = (int)$data['id']; 
 
+    // Find the user with the given 'id' in the array
+    $foundIndex = null;
+    foreach ($usuariosArray as $index => $user) {
+        if ((int)$user['id'] === $idToDelete) {
+            $foundIndex = $index;
+            break;
+        }
+    }
 // Se o usuário foi encontrado, remove-o do array e atualiza o arquivo
 if ($index !== -1) {
     array_splice($usuariosArray, $index, 1);
@@ -49,5 +50,6 @@ if ($index !== -1) {
     header('Content-Type: application/json');
     echo json_encode($response);
 }
-}
+};
+
 ?>
