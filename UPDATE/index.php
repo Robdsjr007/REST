@@ -3,7 +3,6 @@
 <head>
     <link rel="stylesheet" href="./main.css">
     <title>Update</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <content>
