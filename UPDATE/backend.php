@@ -8,7 +8,7 @@ try {
         throw new Exception('Dados inválidos. Certifique-se de fornecer um ID, email e senha válidos.');
     }
 
-    $usuarios = file_get_contents('./../users.txt'); // Lê o arquivo com os usuários cadastrados
+    $usuarios = file_get_contents('../users.txt'); // Lê o arquivo com os usuários cadastrados
     if ($usuarios === false) {
         throw new Exception('Falha ao ler o arquivo de usuários.');
     }
@@ -39,7 +39,7 @@ try {
             throw new Exception('Falha ao converter os dados para JSON.');
         }
 
-        $result = file_put_contents('./../users.txt', $usuariosJson . PHP_EOL); // Escreve os dados atualizados no arquivo
+        $result = file_put_contents('../users.txt', $usuariosJson . PHP_EOL); // Escreve os dados atualizados no arquivo
         if ($result === false) {
             throw new Exception('Falha ao escrever no arquivo de usuários.');
         }
